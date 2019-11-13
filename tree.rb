@@ -1,3 +1,4 @@
+#wee
 class Tree_bin
   attr_reader :head
   class Node
@@ -11,6 +12,7 @@ class Tree_bin
     end
 
   end
+ 
 
   def initialize
     $head = nil
