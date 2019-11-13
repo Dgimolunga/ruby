@@ -1,4 +1,4 @@
-#new_v
+#new_v 1.2
 class Tree_bin
   attr_reader :head
   class Node
