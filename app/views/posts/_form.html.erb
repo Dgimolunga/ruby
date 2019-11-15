@@ -3,18 +3,17 @@
     <%= f.label :title%>
     <%= f.text_field :title%>
   </div>
-  <div class=" form-control">
-    <%= f.label :summary%>
-    <%= f.text_field :summary%>
-  </div>
-  <div class=" form-control">
-    <%= f.label :body%>
-    <%= f.text_field :body%>
-  </div>
+
   <div class=" form-control">
     <%= f.label :content %>
-    <%= f.text_field :content %>
+    <%= f.text_area :content %>
   </div>
+
+  <div class=" form-control">
+    <p>  Published at <%= @post.published_at %></p>
+  </div>
+
+
   <div class=" form-control">
     <%= f.submit 'Save'%>
   </div>

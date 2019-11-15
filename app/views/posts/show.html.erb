@@ -2,3 +2,4 @@
 <%= link_to 'Change', edit_post_path%>
 <%= link_to 'Delete', post_path(@post),  method: :delete, data: {confirm: 'Are you sure ?'}%>
 <p> <%= @post.content %></p>
+<p>  Published at <%= @post.published_at %></p>

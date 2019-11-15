@@ -13,6 +13,7 @@ class PostsController < ApplicationController
 	end
 	def create
 		@post = Post.new(post_params)
+		@post.published_at = DateTime.now
 		if @post.save
 			redirect_to @post
 		else
@@ -39,7 +40,7 @@ class PostsController < ApplicationController
 
 	private
 	def post_params
-		params.require(:post).permit(:title, :summary, :body, :content)
+		params.require(:post).permit(:title, :content, :published_at)
 	end
 	def set_post
 		@post = Post.find(params[:id])
