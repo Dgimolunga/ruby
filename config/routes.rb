@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
   root 'posts#index'
 
-
+  resources :comments
   resources :posts
-
   scope controller: :say, path: :say do
     get :hello
     get :goodbye

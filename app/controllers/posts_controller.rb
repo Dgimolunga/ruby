@@ -7,14 +7,19 @@ class PostsController < ApplicationController
 	end
 
 	def show
+		@comments = @post.comments
+		@new_comment = Comment.new()
+		#@comments = Comment.where("post_id = ?", params[:id])
 	end
 	def new
-		@post = Post.new
+		@post = Post.new()
 	end
 	def create
 		@post = Post.new(post_params)
-		@post.published_at = DateTime.now
+
 		if @post.save
+			Comment.create(post: @post, text_commet: @post.title + @post.content )
+			Comment.create(post: @post, text_commet: @post.content + @post.title )
 			redirect_to @post
 		else
 			render :new

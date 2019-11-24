@@ -1,4 +1,15 @@
 <%= form_for @post do |f|%>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this article from being saved:</h2>
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class=" form-control">
     <%= f.label :title%>
     <%= f.text_field :title%>
@@ -10,11 +21,6 @@
   </div>
 
   <div class=" form-control">
-    <p>  Published at <%= @post.published_at %></p>
-  </div>
-
-
-  <div class=" form-control">
     <%= f.submit 'Save'%>
   </div>
-<%end%>
+<%end %>
