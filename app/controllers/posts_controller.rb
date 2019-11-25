@@ -8,26 +8,23 @@ class PostsController < ApplicationController
 
 	def show
 		@comments = @post.comments
-		@new_comment = Comment.new()
-		#@comments = Comment.where("post_id = ?", params[:id])
-	end
+    @new_comment = @post.comments.build
+  end
+
 	def new
-		@post = Post.new()
-	end
+		@post = Post.new
+  end
+
 	def create
 		@post = Post.new(post_params)
-
 		if @post.save
-			Comment.create(post: @post, text_commet: @post.title + @post.content )
-			Comment.create(post: @post, text_commet: @post.content + @post.title )
 			redirect_to @post
 		else
 			render :new
 		end
 	end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @post.update(post_params)
