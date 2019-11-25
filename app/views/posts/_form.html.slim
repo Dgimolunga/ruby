@@ -1,0 +1,18 @@
+= form_for @post do |f|
+  - if @post.errors.any?
+    #error_explanation
+      h2
+        = pluralize(@post.errors.count, "error")
+        |  prohibited this article from being saved:
+      ul
+        - @post.errors.full_messages.each do |msg|
+          li
+            = msg
+  .form-control
+    = f.label :title
+    = f.text_field :title
+  .form-control
+    = f.label :content
+    = f.text_area :content
+  .form-control
+    = f.submit 'Save'

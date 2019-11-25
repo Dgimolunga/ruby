@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    title
+      | Project One
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    = link_to 'All mass', posts_path
+    |  | 
+    = link_to 'New mass', new_post_path
+    = yield

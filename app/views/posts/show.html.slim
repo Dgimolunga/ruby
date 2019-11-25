@@ -1,0 +1,21 @@
+h1
+  = @post.title
+= link_to 'Change', edit_post_path
+= link_to 'Delete', post_path(@post),  method: :delete, data: {confirm: 'Are you sure ?'}
+p
+  = raw(@post.content)
+p
+  |  Published at 
+  = @post.published_at
+p
+  |  Text length 
+  = @post.text_length
+  |  characters
+p
+  |  The year of publishing 
+  = @post.the_year_of_publishing
+h2
+  |  COMMENTS
+p
+  = render @comments
+=  render 'comments/form_comment'
