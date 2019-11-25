@@ -1,5 +1,12 @@
 <h1> <%= @post.title %> </h1>
 <%= link_to 'Change', edit_post_path%>
 <%= link_to 'Delete', post_path(@post),  method: :delete, data: {confirm: 'Are you sure ?'}%>
-<p> <%= raw(@post.content) %></p>
+<p>  <%= @post.content %></p>
 <p>  Published at <%= @post.published_at %></p>
+<p>  Text length <%= @post.text_length %>  characters</p>
+<p>  The year of publishing <%= @post.the_year_of_publishing  %></p>
+
+<h2>  COMMENTS</h2>
+
+<p> <%= render @comments  %> </p>
+<%=  render 'comments/form_comment' %>

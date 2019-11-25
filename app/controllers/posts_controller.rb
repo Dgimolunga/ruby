@@ -6,21 +6,25 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
-  def show
-  end
+	def show
+		@comments = @post.comments
+		@new_comment = Comment.new()
+		#@comments = Comment.where("post_id = ?", params[:id])
+	end
+	def new
+		@post = Post.new()
+	end
+	def create
+		@post = Post.new(post_params)
 
-  def new
-    @post = Post.new
-  end
-
-  def create
-    @post = Post.new(post_params)
-    if @post.save
-      redirect_to @post
-    else
-      render :new
-    end
-  end
+		if @post.save
+			Comment.create(post: @post, text_commet: @post.title + @post.content )
+			Comment.create(post: @post, text_commet: @post.content + @post.title )
+			redirect_to @post
+		else
+			render :new
+		end
+	end
 
   def edit
   end
@@ -42,7 +46,7 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post)
-          .permit(:title, :content)
+          .permit(:title, :content, :published_at)
   end
 
   def set_post

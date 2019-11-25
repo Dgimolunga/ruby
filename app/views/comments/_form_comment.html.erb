@@ -1,0 +1,14 @@
+
+    <h4>   Add new comment </h4>
+
+    <%= form_for @new_comment do |d|%>
+
+      <div class=" form-control">
+        <%= d.label :text_commet%>
+        <%= d.text_area :text_commet%>
+      </div>
+
+      <div class=" form-control">
+        <%= d.submit 'Save'%>
+      </div>
+    <%end %>
